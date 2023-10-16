@@ -2,15 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/storyteller/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/storyteller/assets/index-196541f8.js"></script>
-    <link rel="stylesheet" href="/storyteller/assets/index-48a8825f.css">
+    
+    <title>StoryTeller</title>
+    <link rel="stylesheet" href="/storyteller/assets/index-ae82da65.css">
   </head>
   <body>
-    <p>lalala</p>
-    <div id="app"></div>
-    
+    <h1>Racontez nous votre histoire</h1>
+    <h2>StoryTeller</h2>
+
+    <p style="text-align: center">Cliquez sur ce bouton pour commencer</p>
+
+    <button onclick="myFunction()">Il était une fois</button>
+
+    <article>
+      <p id="StorryTeller"></p>
+    </article>
+    <script>
+      // OBLIGE DE FAIRE UNE CONSTANTE ATTENTION LE INNERHTML
+      // MARCHE PAS AVEC LES CONSTANTE IL FAIS DES BUG
+      const tableau = [];
+      function myFunction() {
+        let person = prompt(
+          "Inscrivez une phrase",
+          "La petite coquine c'est perdue dans les bois"
+        );
+        if (person != null) {
+          const storyTeller = document.getElementById("StorryTeller");
+          const para = document.createElement("p");
+          const node = document.createTextNode(person);
+          para.appendChild(node);
+          // cette partie la c'est pour que ça s'affiche sur la page
+          storyTeller.appendChild(para);
+          storyTeller.appendChild(document.createElement("br"));
+          // push c'est pour stocker dans le tableau il push dedans quoi
+          tableau.push(person);
+          // Affiche le nombre de phrases et la liste des phrases
+          alert(
+            "Nombre de phrases saisies : " +
+              tableau.length +
+              //quel enfer ce truc ces slash c'est en gros pour que ça s'affiche avec des espaces
+              "\n\nPhrases:\n" +
+              tableau.join("\n")
+          );
+          setTimeout(function () {
+            myFunction();
+          }, 500000);
+        }
+      }
+      // ET AVEC TOUT CA BON DIEU J ESPERE QUE MON CODE SERA UN JOUR PLUS COURS
+    </script>
   </body>
 </html>
